@@ -1,0 +1,58 @@
+
+      -- Aula 03
+
+      UPDATE TCONTRATO SET
+            DESCONTO = NULL
+            WHERE COD_CONTRATO = 4;
+
+      UPDATE TCONTRATO SET
+      DESCONTO = NULL
+      WHERE COD_CONTRATO = 3;
+
+       UPDATE TCONTRATO SET
+            DESCONTO = 11
+            WHERE COD_CONTRATO = 2;
+
+
+      SELECT * FROM TCONTRATO
+
+
+      -- Contar quantos registros há na tabela TCONTRATO, incluindo NULL.
+      SELECT Count(*) AS QTDE_REGISTROS
+      FROM TCONTRATO;
+
+      -- COUNT -> IGNOAR NULOS
+      -- Contar quantas registros há na tabela TCONTRATO, pórem ignorando NULL.
+      SELECT Count(DESCONTO)
+      FROM TCONTRATO;
+
+      -- Quantidade de registros com o estado informado.
+      -- Estados repetidos serão EXIBIDOS.
+      SELECT Count(ESTADO) FROM TALUNO;
+
+      -- Quatidade de estados diferentes.
+      -- Caso exista estados repitidos apenas um será exibido.
+      SELECT Count(DISTINCT(ESTADO)) FROM TALUNO
+
+      COMMIT;
+
+      -- Quantidade de registros por estado.
+      SELECT ESTADO, Count(*)
+      FROM TALUNO
+      GROUP BY ESTADO;
+
+      -- Calculos na tabela TCONTRATO.
+      SELECT Sum(DESCONTO) AS Soma_Desconto,
+                Avg(DESCONTO) AS Media,
+                Count(DESCONTO) AS Desconto,
+                Round(Avg(Nvl(DESCONTO,0)), 2) AS Desconto_Arredondado
+      FROM TCONTRATO;
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+
+  -- Aula 03
+
+      -- Tipos de dados.
+      SELECT * FROM TESTE;
+
+      VARCHAR2(10) -> 'MARCIO'
+      CHAR(10); -> 'MARCIO'
+
+      NUMBER(5, 2) -> 999.99
+
+      -- Exibir as tabelas criadas pelo usuario LOGADO.
+      SELECT * FROM USER_TABLES;
+
+      -- Exibir todas as tabelas do banco.
+      -- Algumas tabelas podem não serem exibidas devio permição ou privilegios.
+      SELECT * FROM ALL_TABLES;
+
+      -- Criando uma tabela com base em um select de outra tabela.
+      CREATE TABLE TCONTRATO_VIP
+      AS
+      SELECT * FROM TCONTRATO WHERE TOTAL > 500;
+
+
+      SELECT * FROM TCONTRATO_VIP;
+
+      -- Alterar uma coluna na tabela
+      ALTER TABLE TCONTRATO_VIP ADD VALOR NUMBER(5,2);
+
+      -- Alterar o tipo de dados de uma coluna
+      ALTER TABLE TCONTRATO_VIP MODIFY VALOR NUMBER(8,2);
+
+      -- Alterar coluna
+      ALTER TABLE TCONTRATO_VIP MODIFY VALOR NUMBER(12,2) DEFAULT 0;
+
+      -- Renomear uma coluna.
+      ALTER TABLE TCONTRATO_VIP RENAME COLUMN VALOR TO VALOR2;
+
+      -- Excluir coluna
+      ALTER TABLE TCONTRATO_VIP DROP COLUMN VALOR2;
+
+      -- Excluir tabela
+      DROP TABLE TCONTRATO_VIP;
+
+      -- Renomear tabela
+      RENAME TCONTRATO TO TCONTRATO_TOP;
+
+      RENAME TCONTRATO_TOP TO TCONTRATO;
+
+      SELECT * FROM TCONTRATO;
+
+      -- Adicionar comentários na tabela
+      COMMENT ON TABLE TCONTRATO IS 'Informações de contrato'
+
+      -- Comentarios na coluna da tabela
+      COMMENT ON COLUMN TCONTRATO.COD_CONTRATO IS 'Código de contrato';
+
+      COMMENT ON COLUMN TCONTRATO. DATA IS 'Data de emissão do Contrato';
+
+
+      -- Desabilitar a coluna.
+      ALTER TABLE TCONTRATO ADD TTOTAL 2 NUMERIC(8,2);
+
+      ALTER TABLE TCONTRATO SET UNSED (TOTAL2)
+
+     -- Excluir colunas não usadas.
+     ALTERTBALE TCONTRATO DROP UNUSED COLUMNS;
+
+     -- Truncar tabela excluir todos os registros da tabela.
+     TRUNCATE TABLE TABELA;
+
+     SELECT * FROM USER_COL _COMMENTS WHERE_NAME='TCONTRATO'
+
+
+
+
+      COMMIT;
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+     -- Aula02
+
+     -- Exibindo dados a partir de multiplas tabelas.
+
+     SELECT * FROM TALUNO;
+
+     SELECT * FROM TCONTRATO;
+
+     -- [Errado] Selecionando dados de duas tabelas distintas (Forma simples, sem união entre as tabelas)
+     SELECT TALUNO.COD_ALUNO, TALUNO.NOME, TCONTRATO.TOTAL
+     FROM TALUNO, TCONTRATO
+
+     -- [Errado] Selecionando dados de duas tabelas distintas (COLUNAS HAMBIGUAS)
+     -- COD_ALUNO NÃO ESTÁ ATRIBUIDO A UMA TABELA. Sistema não localizará o campo.
+     SELECT COD_ALUNO, TALUNO.NOME, TCONTRATO.TOTAL
+     FROM TALUNO, TCONTRATO
+     WHERE TALUNO.COD_ALUNO = TCONTRATO.COD_ALUNO
+
+     -- Selecionando dados de duas tabelas distintas.
+     SELECT TALUNO.COD_ALUNO, TALUNO.NOME, TCONTRATO.TOTAL
+     FROM TALUNO, TCONTRATO
+     WHERE TALUNO.COD_ALUNO = TCONTRATO.COD_ALUNO
+
+     UPDATE TALUNO SET
+     NOME = 'MARCOS'
+     WHERE COD_ALUNO = 5
+
+     COMMIT;

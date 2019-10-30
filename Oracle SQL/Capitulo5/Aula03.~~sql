@@ -1,0 +1,104 @@
+     -- Aula03
+
+     -- Select de duas tabelas
+     -- União das tabelas aluno com contrato.
+     SELECT ALU.COD_ALUNO, ALU.NOME AS ALUNO,
+            CON.COD_CONTRATO, CON.DATA, CON.TOTAL
+     FROM TALUNO ALU, TCONTRATO CON
+     WHERE CON.COD_ALUNO = ALU.COD_ALUNO    -- Criterio União.
+     AND Upper(ALU.NOME) LIKE '%'            -- Filtro
+     ORDER BY ALU.NOME                     -- Ordenar por nome
+
+   -------------------------------------------------------------
+
+   SELECT * FROM TALUNO
+   SELECT * FROM TCONTRATO
+   SELECT * FROM TITEM
+   SELECT * FROM TCURSO
+
+   COMMIT;
+
+   -- União de 4 tabelas
+   SELECT ALU.COD_ALUNO, ALU.NOME AS ALUNO,
+          CON.COD_CONTRATO, CON.DATA, CON.TOTAL,
+          ITE.COD_CURSO, CUR.NOME AS CURSO,
+          ITE.VALOR
+
+   FROM TALUNO ALU, TCONTRATO CON,
+        TITEM ITE, TCURSO CUR
+
+   WHERE ALU.COD_ALUNO = CON.COD_ALUNO(+) -- Criando união.
+   AND CON.COD_CONTRATO = ITE.COD_CONTRATO(+)
+   AND ITE.COD_CURSO = CUR.COD_CURSO(+)
+
+   ORDER BY CON.TOTAL DESC;
+
+   INSERT INTO TALUNO VALUES (10, 'PEDRO','NOVO HAMBURGO', NULL,'AM', NULL, NULL)
+
+
+     SELECT * FROM
+     taluno
+
+
+     -------------------------------------------------------------------------------------
+
+     CREATE TABLE TDESCONTO
+     ( CLASSE VARCHAR(1) PRIMARY KEY,
+        INFERIOR NUMBER (4, 2),
+        SUPERIOR NUMBER(4,2)
+     );
+
+     INSERT INTO TDESCONTO VALUES ('A', 00, 10);
+     INSERT INTO TDESCONTO VALUES ('B', 11, 15);
+     INSERT INTO TDESCONTO VALUES ('C', 16, 20);
+     INSERT INTO TDESCONTO VALUES ('D', 21, 25);
+     INSERT INTO TDESCONTO VALUES ('E', 26, 30);
+
+     SELECT * FROM TDESCONTO;
+     SELECT * FROM TCONTRATO;
+
+     COMMIT;
+
+     update tcontrato SET
+     desconto = 15
+     WHERE cod_contrato = 1;
+
+     UPDATE tcontrato SET
+     desconto = 27
+     WHERE cod_contrato = 4;
+
+     UPDATE tcontrato SET
+     desconto = 18
+     WHERE cod_contrato = 5;
+
+
+     UPDATE tcontrato SET
+     desconto = 27
+     WHERE cod_contrato = 6;
+
+
+     -- Classificar contratos
+     SELECT CON.COD_CONTRATO AS CONTRATO,
+            DES.CLASSE AS DESCONTO
+
+
+     FROM TCONTRATO CON, TDESCONTO DES
+     WHERE Nvl(CON.DESCONTO, 0) BETWEEN DES.INFERIOR
+                                AND DES.SUPERIOR
+
+     ORDER BY CON.COD_CONTRATO;
+
+     -- Parein aqui.
+
+
+
+
+
+
+
+
+
+
+
+
+
